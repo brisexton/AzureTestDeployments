@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>5e749a8d-f1b6-4ba7-863b-3fac4dfd8ea5</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <Content Include="azuredeploy.json" />
+    <Content Include="azuredeploy.parameters.json" />
+    <None Include="DSC\StorageDsc\4.4.0.0\CHANGELOG.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\CODE_OF_CONDUCT.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFTDSC_Disk\en-us\MSFTDSC_Disk.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFTDSC_Disk\MSFTDSC_Disk.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFTDSC_Disk\MSFTDSC_Disk.schema.mof" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFTDSC_Disk\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_DiskAccessPath\en-us\MSFT_DiskAccessPath.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_DiskAccessPath\MSFT_DiskAccessPath.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_DiskAccessPath\MSFT_DiskAccessPath.schema.mof" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_DiskAccessPath\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_MountImage\en-us\MSFT_MountImage.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_MountImage\MSFT_MountImage.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_MountImage\MSFT_MountImage.schema.mof" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_MountImage\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_OpticalDiskDriveLetter\en-us\MSFT_OpticalDiskDriveLetter.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_OpticalDiskDriveLetter\MSFT_OpticalDiskDriveLetter.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_OpticalDiskDriveLetter\MSFT_OpticalDiskDriveLetter.schema.mof" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_OpticalDiskDriveLetter\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForDisk\en-us\MSFT_WaitForDisk.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForDisk\MSFT_WaitForDisk.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForDisk\MSFT_WaitForDisk.schema.mof" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForDisk\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForVolume\en-us\MSFT_WaitForVolume.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForVolume\MSFT_WaitForVolume.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForVolume\MSFT_WaitForVolume.schema.mof" />
+    <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFT_WaitForVolume\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\DiskAccessPath\1-DiskAccessPath_InitializeDataDiskWithAccessPath.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\DiskAccessPath\2-DiskAccessPath_InitializeDataDiskWithAccessPathUsingUniqueId.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\Disk\1-Disk_InitializeDataDisk.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\Disk\2-Disk_InitializeDataDiskUsingUniqueId.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\MountImage\1-MountImage_DismountISO.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\MountImage\2-MountImage_MountISO.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\MountImage\3-MountImage_MountVHD.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\OpticalDiskDriveLetter\1-OpticalDiskDriveLetter_SetDriveLetter.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\OpticalDiskDriveLetter\2-OpticalDiskDriveLetter_RemoveDriveLetter.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\OpticalDiskDriveLetter\3-OpticalDiskDriveLetter_SetDriveLetterMulti.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\WaitForDisk\1-WaitForDisk_InitializeDataDisk.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\WaitForDisk\2-WaitForDisk_InitializeDataDiskWithAccessPath.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\WaitForDisk\3-WaitForDisk_InitializeDataDiskWithAccessPathUsingUniqueId.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\WaitForVolume\1-WaitForVolume_VHD.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Examples\Resources\WaitForVolume\2-WaitForVolume_ISO.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\LICENSE" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Modules\StorageDsc.Common\en-us\StorageDsc.Common.strings.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Modules\StorageDsc.Common\StorageDsc.Common.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Modules\StorageDsc.ResourceHelper\StorageDsc.ResourceHelper.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\README.md" />
+    <None Include="DSC\StorageDsc\4.4.0.0\StorageDsc.psd1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\ModuleConflict.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFTDSC_Disk.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFTDSC_Disk.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_DiskAccessPath.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_DiskAccessPath.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_MountImage_dismount.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_MountImage_ISO.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_MountImage_mount.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_MountImage_VHD.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_OpticalDiskDriveLetter.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_OpticalDiskDriveLetter.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_WaitForDisk.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_WaitForDisk.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_WaitForVolume.config.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Integration\MSFT_WaitForVolume.Integration.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\TestHelpers\CommonTestHelper.psm1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\MSFTDSC_Disk.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\MSFT_DiskAccessPath.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\MSFT_MountImage.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\MSFT_OpticalDiskDriveLetter.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\MSFT_WaitForDisk.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\MSFT_WaitForVolume.Tests.ps1" />
+    <None Include="DSC\StorageDsc\4.4.0.0\Tests\Unit\StorageDsc.Common.Tests.ps1" />
+    <None Include="DSC\xPendingReboot\0.4.0.0\DSCResources\MSFT_xPendingReboot\MSFT_xPendingReboot.psm1" />
+    <None Include="DSC\xPendingReboot\0.4.0.0\DSCResources\MSFT_xPendingReboot\MSFT_xPendingReboot.schema.mof" />
+    <None Include="DSC\xPendingReboot\0.4.0.0\LICENSE" />
+    <None Include="DSC\xPendingReboot\0.4.0.0\README.md" />
+    <None Include="DSC\xPendingReboot\0.4.0.0\Tests\xPendingReboot.tests.ps1" />
+    <None Include="DSC\xPendingReboot\0.4.0.0\xPendingReboot.psd1" />
+    <None Include="Scripts\ConnectToAzure.ps1" />
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <Content Include="Deploy-AzureResourceGroup.ps1" />
+    <Content Include="KeyVault\addpermissions.json" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\ComputerManagementDsc.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_Computer\en-US\MSFT_Computer.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_Computer\MSFT_Computer.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_Computer\MSFT_Computer.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_Computer\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_OfflineDomainJoin\en-US\MSFT_OfflineDomainJoin.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_OfflineDomainJoin\MSFT_OfflineDomainJoin.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_OfflineDomainJoin\MSFT_OfflineDomainJoin.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_OfflineDomainJoin\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerPlan\en-US\MSFT_PowerPlan.schema.mfl" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerPlan\en-US\MSFT_PowerPlan.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerPlan\MSFT_PowerPlan.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerPlan\MSFT_PowerPlan.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerPlan\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerShellExecutionPolicy\en-US\MSFT_PowerShellExecutionPolicy.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerShellExecutionPolicy\MSFT_PowerShellExecutionPolicy.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerShellExecutionPolicy\MSFT_PowerShellExecutionPolicy.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_PowerShellExecutionPolicy\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_ScheduledTask\en-US\MSFT_ScheduledTask.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_ScheduledTask\MSFT_ScheduledTask.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_ScheduledTask\MSFT_ScheduledTask.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_ScheduledTask\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_TimeZone\en-us\MSFT_TimeZone.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_TimeZone\MSFT_TimeZone.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_TimeZone\MSFT_TimeZone.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_TimeZone\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_VirtualMemory\en-US\MSFT_VirtualMemory.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_VirtualMemory\MSFT_VirtualMemory.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_VirtualMemory\MSFT_VirtualMemory.schema.mof" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\DSCResources\MSFT_VirtualMemory\README.md" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\1-RenameComputerAndSetWorkgroup.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\2-JoinDomain.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\3-RenameComputerInDomain.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\4-RenameComputerInWorkgroup.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\5-UnjoinDomainAndJoinWorkgroup.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\6-SetComputerDescriptionInWorkgroup.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\Computer\7-JoinDomainSpecifyingDC.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\OfflineDomainJoin\1-JoinDomainUsingODJBlob.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\PowerPlan\1-SetPowerPlan.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\PowerShellExecutionPolicy\1-SetPowerShellExecutionPolicy.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\PowerShellExecutionPolicy\2-SetPowershellExecutionPolicyForMultipleScopes.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\1-CreateScheduledTaskOnce.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\10-RunPowerShellTaskOnceAsUserInteractiveOnly.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\11-DisableABuiltInTask.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\12-DeleteABuiltInTask.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\13-CreateScheduledTasksOnEvent.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\14-RunPowerShellTaskOnceAsGroupManagedServiceAccount.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\15-CreateScheduledTaskOnceSynchronizeAcrossTimeZoneEnabled.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\2-CreateScheduledTaskDaily.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\3-CreateScheduledTasksDailyIndefinitely.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\4-CreateScheduledTasksWeekly.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\5-CreateScheduledTasksAtLogon.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\6-CreateScheduledTasksAtStartup.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\7-RunPowerShellTaskEvery15Minutes.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\8-RunPowerShellTaskEvery15MinutesIndefinitely.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\ScheduledTask\9-RunPowerShellTaskOnceAsUserWithHighestPriveleges.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\TimeZone\1-SetTimeZone.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Examples\Resources\VirtualMemory\1-SetVirtualMemory.ps1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Modules\ComputerManagementDsc.Common\ComputerManagementDsc.Common.psm1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Modules\ComputerManagementDsc.Common\en-us\ComputerManagementDsc.Common.strings.psd1" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Modules\ComputerManagementDsc.Common\SetTimeZone.cs" />
+    <None Include="DSC\ComputerManagementDsc\6.0.0.0\Modules\ComputerManagementDsc.ResourceHelper\ComputerManagementDsc.ResourceHelper.psm1" />
+    <Content Include="DSC\vmConfig.ps1" />
+    <Content Include="DSC\vmConfigData.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\CreateResourceGroup.ps1" />
+    <Content Include="Templates\storageAccount.json" />
+    <Content Include="Templates\storageAccount.parameters.json" />
+    <Content Include="Automation\automation.json" />
+    <Content Include="Automation\automation.parameters.json" />
+    <Content Include="KeyVault\keyvault.json" />
+    <Content Include="KeyVault\keyvault.parameters.json" />
+    <Content Include="OMS\omsworkspace.json" />
+    <Content Include="OMS\omsworkspace.parameters.json" />
+    <None Include="Scripts\GetVMImageInfo.ps1" />
+    <None Include="Templates\complete.json" />
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+</Project>

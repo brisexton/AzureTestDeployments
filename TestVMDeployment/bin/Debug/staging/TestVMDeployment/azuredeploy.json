@@ -1,0 +1,291 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "primaryLocation": {
+      "type": "string",
+      "defaultValue": "eastus",
+      "metadata": {
+        "description": "Primary Azure region for resource deployment."
+      }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "defaultValue": "centralus",
+      "metadata": {
+        "description": "Secondary Azure Region for resource deployment."
+      }
+    },
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Virtual Machine."
+      }
+    },
+    "vmSystemDiskSuffix": {
+      "type": "string",
+      "defaultValue": "OSDisk",
+      "metadata": {
+        "description": "Suffix appended to vmName to declare what the name of the system disk is."
+      }
+    },
+    "vmAdminUserName": {
+      "type": "string",
+      "defaultValue": "vmAdmin",
+      "metadata": {
+        "description": "Local Administrator Username."
+      }
+    },
+    "vmAdminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Local Administrator Password."
+      }
+    },
+    "vmWinOsVersion": {
+      "type": "string",
+      "defaultValue": "2016-Datacenter-smalldisk",
+      "allowedValues": [
+        "2016-Datacenter",
+        "2016-Datacenter-smalldisk",
+        "2016-Datacenter-Server-Core",
+        "2016-Datacenter-Server-Core-smalldisk",
+        "2019-Datacenter-Core",
+        "2019-Datacenter-Core-smalldisk"
+      ]
+    },
+    "vmWinOsLicenseType": {
+      "type": "string",
+      "defaultValue": "Windows_Server"
+    },
+    "vmImagePublisher": {
+      "type": "string",
+      "defaultValue": "MicrosoftWindowsServer"
+    },
+    "vmImageOffer": {
+      "type": "string",
+      "defaultValue": "WindowsServer"
+    },
+    "vmSize": {
+      "type": "string",
+      "defaultValue": "Standard_B2ms"
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string",
+      "defaultValue": "TestVMDeployment"
+    },
+    "pipDnsName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "tsaebriansextontestvm1"
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+      }
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Auto-generated token to access _artifactsLocation"
+      }
+    }
+  },
+  "variables": {
+    "vmNicName": "[concat(parameters('vmName'), '-Nic')]",
+    "virtualnetworkname": "briantestvnet",
+    "briantestPrefix": "172.30.128.0/24",
+    "briantestSubnet1Name": "Subnet-1",
+    "briantestSubnet1Prefix": "172.30.128.0/24",
+    "vnetId": "[resourceId('rg-TestVMDeployment', 'Microsoft.Network/virtualNetworks', variables('virtualnetworkname'))]",
+    "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('briantestSubnet1Name'))]",
+    "pipName": "[concat(parameters('vmName'), '-pip')]",
+    "storageAccountName": "tsaetestvm1storage",
+    "vmConfigArchiveFolder": "DSC",
+    "vmConfigArchiveFileName": "vmConfig.zip"
+  },
+  "resources": [
+    {
+      "name": "briantestvnet",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2018-08-01",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "briantestvnet",
+        "CIDR": "[variables('briantestSubnet1Prefix')]"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('briantestPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('briantestSubnet1Name')]",
+            "properties": {
+              "addressPrefix": "[variables('briantestSubnet1Prefix')]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2018-02-01",
+      "location": "[parameters('primaryLocation')]",
+      "name": "[variables('vmNicName')]",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "172.30.128.19",
+              "privateIPAddressVersion": "IPv4",
+              "subnet": {
+                "id": "[variables('subnetRef')]"
+              },
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('pipName'))]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": [
+            "8.8.8.8",
+            "8.8.4.4"
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'briantestvnet')]",
+        "[resourceId('Microsoft.Network/publicIPAddresses', variables('pipName'))]"
+      ]
+    },
+    {
+      "comments": "test virtual machine",
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2018-06-01",
+      "location": "[parameters('primaryLocation')]",
+      "name": "[parameters('vmName')]",
+      "tags": {
+        "Environment": "DEV",
+        "Command": "THQ",
+        "Department": "InformationTechnology",
+        "Owner": "BrianSexton"
+      },
+      "properties": {
+        "licenseType": "[parameters('vmWinOsLicenseType')]",
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "osProfile": {
+          "computerName": "[parameters('vmName')]",
+          "adminUsername": "[parameters('vmAdminUserName')]",
+          "adminPassword": "[parameters('vmAdminPassword')]"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "[parameters('vmImagePublisher')]",
+            "offer": "[parameters('vmImageOffer')]",
+            "sku": "[parameters('vmWinOsVersion')]",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "[concat(parameters('vmName'), '-C')]",
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "diskSizeGB": 30,
+            "managedDisk": {
+              "storageAccountType": "Standard_LRS"
+            }
+          },
+          "dataDisks": [
+            {
+              "name": "[concat(parameters('vmName'), '-E')]",
+              "caching": "ReadWrite",
+              "createOption": "Empty",
+              "lun": 0,
+              "diskSizeGB": 30,
+              "managedDisk": {
+                "storageAccountType": "Standard_LRS"
+              }
+            }
+          ]
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('vmNicName'))]"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', variables('vmNicName'))]"
+      ],
+      "resources": [
+        {
+          "name": "Microsoft.PowerShell.DSC",
+          "type": "extensions",
+          "location": "[parameters('primaryLocation')]",
+          "apiVersion": "2018-06-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          ],
+          "tags": {
+            "displayName": "vmConfig"
+          },
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.9",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+              "wmfVersion": "latest",
+              "privacy": {
+                "dataCollection": "Enable"
+              },
+              "configuration": {
+                "url": "[concat(parameters('_artifactsLocation'), '/', variables('vmConfigArchiveFolder'), '/', variables('vmConfigArchiveFileName'))]",
+                "script": "vmConfig.ps1",
+                "function": "Main"
+              },
+              "configurationData": {
+                "url": "[concat(parameters('_artifactsLocation'), '/DSC/vmConfigData.psd1')]"
+              },
+              "configurationArguments": {
+                "nodeName": "[parameters('vmName')]"
+              }
+            },
+            "protectedSettings": {
+              "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]",
+              "configurationDataUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "[variables('pipName')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "location": "[parameters('primaryLocation')]",
+      "apiVersion": "2016-03-30",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "PublicIPAddress"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "dnsSettings": {
+          "domainNameLabel": "[parameters('pipDnsName')]"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
