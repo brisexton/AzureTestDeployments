@@ -1,0 +1,1 @@
+C:\Users\Brian.Sexton\Training\Azure\ARMTemplates\TestVMDeployment\TestVMDeployment\obj\Debug\TestVMDeployment.deployproj.CoreCompileInputs.cache
