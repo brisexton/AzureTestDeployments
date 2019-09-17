@@ -3,8 +3,8 @@
 #
 
 
-$AdminCreds = Get-Credential bs.admin@use.salvationarmy.org
-$MyVSSubscription = "VSE-BrianSexton-d7b"
+$AdminCreds = Get-Credential
+$MyVSSubscription = "VSE-BrianSexton"
 
 
 Login-AzureRmAccount -Credential $AdminCreds
