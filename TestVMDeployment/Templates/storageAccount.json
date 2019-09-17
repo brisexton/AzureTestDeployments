@@ -19,7 +19,7 @@
     }
   },
   "variables": {
-    "storageAccountName": "tsaetestvm1storage"
+    "storageAccountName": "dbattestvm1storage"
   },
   "resources": [
     {
