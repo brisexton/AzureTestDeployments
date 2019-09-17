@@ -8,7 +8,7 @@
     "vmAdminPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/2ad85d44-7947-468c-8965-9c9e0552aad8/resourceGroups/rg-TestVMDeployment/providers/Microsoft.KeyVault/vaults/kv-briansKeyVault"
+          "id": "/subscriptions/-/resourceGroups/rg-TestVMDeployment/providers/Microsoft.KeyVault/vaults/kv-briansKeyVault"
         },
         "secretName": "vmAdminPassword"
       }
