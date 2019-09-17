@@ -24,7 +24,7 @@
     },
     "secretValue": {
       "type": "string",
-      "defaultValue": "Apw4u2gi2as!",
+      "defaultValue": "P@ssw0rd",
       "metadata": {
         "description":  "Secret value."
       }
