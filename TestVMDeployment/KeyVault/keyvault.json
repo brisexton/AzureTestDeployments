@@ -94,7 +94,7 @@
   },
   "variables": {
     "tenantId": "[subscription().tenantId]",
-    "objectid": "e8217794-94ad-4ac1-8a71-26df6de44b7f"
+    "objectid": ""
   },
   "resources": [
     {
