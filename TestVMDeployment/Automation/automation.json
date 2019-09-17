@@ -2,10 +2,54 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus2",
+      "metadata": {
+        "description": "location of automation account."
+      }
+    },
+    "automationAccountName": {
+      "type": "string",
+      "defaultValue": "BrianTestAutomation",
+      "metadata": {
+        "description": "Name of automation account"
+      }
+    }
+
   },
   "variables": {
   },
   "resources": [
+    {
+      "name": "[parameters('automationAccountName')]",
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "apiVersion": "2018-06-30",
+      "properties": {
+        "logVerbose": true,
+        "logProgress": true,
+        "runbookType": "PowerShell",
+        "draft": {
+          "inEdit": true,
+          "draftContentLink": {
+            "uri": "string",
+            "contentHash": {
+              "algorithm": "string",
+              "value": "string"
+            },
+            "version": "string"
+          },
+          "parameters": {},
+          "outputTypes": [
+            "string"
+          ]
+        },
+        "description": "TestAutomationAccount",
+        "logActivityTrace": 1
+      },
+      "location": "[parameters('location')]",
+      "tags": {}
+    }
   ],
   "outputs": {
   }
