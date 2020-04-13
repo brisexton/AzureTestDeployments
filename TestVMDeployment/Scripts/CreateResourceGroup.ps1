@@ -8,15 +8,15 @@ $location = 'East US'
 $tags = @{
 	"Vendor" = "BrianSexton"
 }
-New-AzureRmResourceGroup -name $resourceGroupname -Location $location -Tag $tags
+New-AzResourceGroup -name $resourceGroupname -Location $location -Tag $tags
 
 
 ################
 # Tear Down ##
 ###########
 
-Remove-AzureRmResourceGroup $ResourceGroupName
+Remove-AzResourceGroup $ResourceGroupName
 
-Get-AzureRmResourceGroup
+Get-AzResourceGroup
 
-New-AzureRmResourceGroup -Name 'rg-tsae-briansexton-dev-ue' -Location $location -tag $tags
+New-AzResourceGroup -Name 'rg-briansexton-dev-ue' -Location $location -tag $tags
