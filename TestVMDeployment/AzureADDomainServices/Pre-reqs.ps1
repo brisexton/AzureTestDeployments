@@ -6,8 +6,6 @@ Connect-AzureAD
 # Register Azure Active Directory Service Principal
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
-
-
 # Connect to your Azure AD directory.
 Connect-AzureAD
 
