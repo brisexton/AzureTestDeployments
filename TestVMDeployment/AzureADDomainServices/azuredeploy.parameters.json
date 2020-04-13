@@ -9,7 +9,7 @@
       "value": "samplemanageddomain.companya.com"
     },
     "virtualNetworkResourceGroupRegionOne": {
-      "value": "rg-VirtualNetwork"
+      "value": "rg-VirtualNetwork-eastus"
     },
     "virtualNetworkNameRegionOne": {
       "value": "vn-azure-eastus"
