@@ -25,6 +25,9 @@
   <ItemGroup>
     <Content Include="azuredeploy.json" />
     <Content Include="azuredeploy.parameters.json" />
+    <None Include="AzureADDomainServices\azuredeploy.json" />
+    <None Include="AzureADDomainServices\azuredeploy.parameters.json" />
+    <None Include="AzureADDomainServices\Pre-reqs.ps1" />
     <None Include="DSC\StorageDsc\4.4.0.0\CHANGELOG.md" />
     <None Include="DSC\StorageDsc\4.4.0.0\CODE_OF_CONDUCT.md" />
     <None Include="DSC\StorageDsc\4.4.0.0\DSCResources\MSFTDSC_Disk\en-us\MSFTDSC_Disk.strings.psd1" />
@@ -184,6 +187,11 @@
     <Content Include="OMS\omsworkspace.parameters.json" />
     <None Include="Scripts\GetVMImageInfo.ps1" />
     <None Include="Templates\complete.json" />
+    <None Include="WindowsVirtrualDesktop\azuredeploy.json" />
+    <None Include="WindowsVirtrualDesktop\azuredeploy.parameters.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Networking\" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
