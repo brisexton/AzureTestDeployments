@@ -4,11 +4,10 @@
 
 
 $AdminCreds = Get-Credential
-$MyVSSubscription = "VSE-BrianSexton"
+$MyVSSubscription = "VSE*"
 
+Import-AzContext -Path C:\Automation\credentials\Azure-brianjsexton.json
 
-Login-AzureRmAccount -Credential $AdminCreds
+Get-AzSubscription | Where-Object {$_.Name -like "$MyVSSubscription"} | Set-AzContext
 
-Set-AzureRmContext -Subscription $MyVSSubscription
-
-Get-AzureRmResourceGroup
+Get-AzResourceGroup
