@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "locationRegionOne": {
+      "value": "East US"
+    },
+    "managedDomainName": {
+      "value": "samplemanageddomain.companya.com"
+    },
+    "virtualNetworkResourceGroupRegionOne": {
+      "value": "rg-VirtualNetwork"
+    },
+    "virtualNetworkNameRegionOne": {
+      "value": "vn-azure-eastus"
+    },
+    "aaddsSubnetRegionOne": {
+      "value": "AADDS-Dedicated"
+    }
+  }
+}

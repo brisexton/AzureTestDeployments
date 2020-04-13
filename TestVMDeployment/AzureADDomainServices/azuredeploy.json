@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "locationRegionOne": {
+      "type": "string",
+      "metadata": {
+        "description": "The Azure region where the primary instance of Azure AD Domain Services will live at. Region must have vnet Present with AADDS Subnet."
+      }
+    },
+    "managedDomainName": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "DNS Name of the Azure AD Domain Services domain."
+      }
+    },
+    "virtualNetworkResourceGroupRegionOne": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Name of the Resource Group where the virtual network lives."
+      }
+    },
+    "virtualNetworkNameRegionOne": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Virtual Network name in primary region where the AADDS subnet lives."
+      }
+    },
+    "aaddsSubnetRegionOne": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Subnet Name in the primary region that Azure AD Domain Services will use. "
+      }
+    }
+  },
+  "variables": {
+    "vnetIdRegionOne": "[resourceId(parameters('virtualNetworkResourceGroupRegionOne'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkNameRegionOne'))]",
+    "subnetRefRegionOne": "[concat(variables('vnetIdRegionOne'), '/subnets/', parameters('aaddsSubnetRegionOne'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.AAD/domainServices",
+      "apiVersion": "2017-06-01",
+      "name": "[parameters('managedDomainName')]",
+      "location": "[parameters('locationRegionOne')]",
+      "tags": {},
+      "properties": {
+        "domainName": "[parameters('managedDomainName')]",
+        "subnetId": "[variables('subnetRefRegionOne')]",
+        "notificationSettings": {
+          "notifyDcAdmins": "Enabled",
+          "notifyGlobalAdmins": "Enabled"
+        },
+        "domainSecuritySettings": {
+          "syncNtlmPasswords": "Enabled"
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
