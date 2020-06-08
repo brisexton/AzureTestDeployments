@@ -25,8 +25,8 @@
   <ItemGroup>
     <Content Include="azuredeploy.json" />
     <Content Include="azuredeploy.parameters.json" />
-    <None Include="AzureADDomainServices\azuredeploy.json" />
-    <None Include="AzureADDomainServices\azuredeploy.parameters.json" />
+    <Content Include="AzureADDomainServices\azuredeploy.json" />
+    <Content Include="AzureADDomainServices\azuredeploy.parameters.json" />
     <None Include="AzureADDomainServices\Pre-reqs.ps1" />
     <None Include="DSC\StorageDsc\4.4.0.0\CHANGELOG.md" />
     <None Include="DSC\StorageDsc\4.4.0.0\CODE_OF_CONDUCT.md" />
@@ -104,6 +104,8 @@
     <None Include="DSC\xPendingReboot\0.4.0.0\README.md" />
     <None Include="DSC\xPendingReboot\0.4.0.0\Tests\xPendingReboot.tests.ps1" />
     <None Include="DSC\xPendingReboot\0.4.0.0\xPendingReboot.psd1" />
+    <Content Include="Networking\point2site.json" />
+    <Content Include="Networking\point2sitevpn.parameters.json" />
     <None Include="Scripts\ConnectToAzure.ps1" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
@@ -190,8 +192,10 @@
     <None Include="WindowsVirtrualDesktop\azuredeploy.json" />
     <None Include="WindowsVirtrualDesktop\azuredeploy.parameters.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Networking\" />
-  </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties networking_4point2site_1json__JsonSchema="https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
