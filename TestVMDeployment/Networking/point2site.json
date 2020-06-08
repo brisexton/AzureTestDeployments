@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "vpnGatewaySubnet": "10.0.0.0/24",
+    "vpnGatewaySubnetName": "GatewaySubnet",
+    "vn-brisexton-test-uePrefix": "10.0.0.0/16",
+    "vn-brisexton-test-ueSubnet1Name": "Subnet-1",
+    "vn-brisexton-test-ueSubnet1Prefix": "10.0.1.0/24",
+    "vn-brisexton-test-ueSubnet2Name": "Subnet-2",
+    "vn-brisexton-test-ueSubnet2Prefix": "10.0.2.0/24"
+
+  },
+  "resources": [
+    {
+      "name": "vn-brisexton-test-ue",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[parameters('location')]",
+      "apiVersion": "2016-03-30",
+      "dependsOn": [],
+      "tags": {
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('vn-brisexton-test-uePrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('vpnGatewaySubnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('vpnGatewaySubnet')]"
+            }
+          },
+          {
+            "name": "[variables('vn-brisexton-test-ueSubnet1Name')]",
+            "properties": {
+              "addressPrefix": "[variables('vn-brisexton-test-ueSubnet1Prefix')]"
+            }
+          },
+          {
+            "name": "[variables('vn-brisexton-test-ueSubnet2Name')]",
+            "properties": {
+              "addressPrefix": "[variables('vn-brisexton-test-ueSubnet2Prefix')]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "pip-brisexton-test-ue",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2019-04-01",
+      "location": "[parameters('location')",
+      "tags": {},
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "publicIPAddressVersion": "IPv4",
+        "dnsSettings": {
+          "domainNameLabel": "string",
+          "fqdn": "string",
+          "reverseFqdn": "string"
+        },
+        "ddosSettings": {
+          "protectionCoverage": "Basic"
+        }
+      }
+    },
+    {
+      "name": "vpnGateway",
+      "type": "Microsoft.Network/p2svpnGateways",
+      "apiVersion": "2019-04-01",
+      "location": "string",
+      "tags": {},
+      "properties": {
+        "virtualHub": {
+          "id": "string"
+        },
+        "vpnGatewayScaleUnit": 1,
+        "p2SVpnServerConfiguration": {
+          "id": "string"
+        },
+        "vpnClientAddressPool": {
+          "addressPrefixes": [
+            "172.16.1.0/24"
+          ]
+        },
+        "customRoutes": {
+          "addressPrefixes": [
+            "10.0.1.0.24"
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
