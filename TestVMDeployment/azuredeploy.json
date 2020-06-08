@@ -174,8 +174,6 @@
       "name": "[parameters('vmName')]",
       "tags": {
         "Environment": "DEV",
-        "Command": "THQ",
-        "Department": "InformationTechnology",
         "Owner": "BrianSexton"
       },
       "properties": {
