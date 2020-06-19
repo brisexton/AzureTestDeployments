@@ -57,7 +57,7 @@
       "name": "pip-brisexton-test-ue",
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2019-04-01",
-      "location": "[parameters('location')",
+      "location": "[parameters('location')]",
       "tags": {},
       "sku": {
         "name": "Basic"
