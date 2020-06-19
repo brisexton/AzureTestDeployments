@@ -195,7 +195,7 @@
   <Target Name="GetReferenceAssemblyPaths" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties networking_4point2site_1json__JsonSchema="https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#" />
+      <UserProperties />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
